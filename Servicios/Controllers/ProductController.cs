@@ -15,7 +15,6 @@ namespace Servicios.Controllers
     public class ProductController : ControllerBase
     {      
         private TiendaDbContext context;
-
         public ProductController(TiendaDbContext ctx)
         {
             context = ctx;
@@ -43,7 +42,6 @@ namespace Servicios.Controllers
                 TotalProductos = cantidadProductosFiltrados,
                 Productos = productosPaginados
             };
-
             return Ok(objeto);
         }
 
