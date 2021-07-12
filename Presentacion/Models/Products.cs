@@ -22,8 +22,6 @@ namespace Presentacion.Models
 
         [Required(ErrorMessage = "Especificar un tipo de producto")]
         public long TipoId { get; set; }
-
-        
         public string TipoNombre { get; set; }
 
     }
