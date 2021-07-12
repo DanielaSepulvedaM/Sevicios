@@ -18,7 +18,6 @@ namespace Presentacion
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -26,13 +25,10 @@ namespace Presentacion
         {
             services.AddControllersWithViews();
             services.AddScoped<IDataSource, ServicioDatasource>();
-
             services.AddHttpClient("ServicioProductos", c =>
             {
                 c.BaseAddress = new Uri("http://localhost:5000");
             });
-
-        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,18 +43,14 @@ namespace Presentacion
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
-           
+            }); 
         }
     }
 }
