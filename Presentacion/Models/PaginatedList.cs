@@ -10,7 +10,6 @@ namespace Presentacion.Models
         public int PaginaActual { get; set; }
         public int TotalPages { get; set; }
         public int ItemsPorPng { get; set; }
-       
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
             PaginaActual = pageIndex;
