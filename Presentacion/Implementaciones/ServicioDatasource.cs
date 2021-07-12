@@ -13,13 +13,11 @@ namespace Presentacion.Interfaces
     {
         private readonly IHttpClientFactory httpClientFactory;
         private readonly ILogger<ServicioDatasource> logger;
-
         public ServicioDatasource(IHttpClientFactory httpClientFactory, ILogger<ServicioDatasource> logger)
         {
             this.httpClientFactory = httpClientFactory;
             this.logger = logger;
         }
-
         public async Task<List<Tipo>> ListarTipos()
         {
             //CreateClient: sirve para crear un cliente http
@@ -34,7 +32,6 @@ namespace Presentacion.Interfaces
             else
                 throw new System.Exception("No je pudo");
         }
-
         public async Task GuardarProducto(Product product)
         {
             var client = httpClientFactory.CreateClient("ServicioProductos");
@@ -48,12 +45,9 @@ namespace Presentacion.Interfaces
             }
             
         }
-
-
         public async Task<PaginatedList<Product>> ListarProductos(int pgn, int tamPgn, long? tipoID)
         {
             var client = httpClientFactory.CreateClient("ServicioProductos");
-
             var parametros = new Dictionary<string, string>
             {
                 { "pgn", pgn.ToString() },
@@ -64,7 +58,6 @@ namespace Presentacion.Interfaces
                 parametros.Add("tipoID", tipoID.ToString());
 
             var url = QueryHelpers.AddQueryString("api/product", parametros); //api/product?pgn=#&tipoID=
-
             var result = await client.GetAsync(url);
 
             if (result.IsSuccessStatusCode)
