@@ -12,7 +12,6 @@ namespace Servicios.Controllers
     public class TipoController : Controller
     {
         private TiendaDbContext context;
-
         public TipoController(TiendaDbContext ctx)
         {
             context = ctx;
