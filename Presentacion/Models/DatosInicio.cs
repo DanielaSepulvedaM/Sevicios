@@ -29,22 +29,20 @@ namespace Presentacion.Models
             new Tipo{TipoId=2, Nombre = "TIPO B"},
             new Tipo{TipoId=3, Nombre = "TIPO C"},
         };
-
         public Task<PaginatedList<Product>> ListarProductos(int pgn, int tamPgn, long? tipoID)
         {
             var items = Products.Where(n => tipoID.HasValue ? n.TipoId == tipoID.Value : true)
                     .Skip((pgn - 1) * tamPgn).Take(tamPgn).ToList();
             return Task.FromResult(new PaginatedList<Product>(items, Products.Count(), pgn, tamPgn));
         }
-
         public Task<List<Tipo>> ListarTipos()
         {
             return Task.FromResult(Tipos.ToList());
         }
-
-        public async Task GuardarProducto(Product product)
+        public Task GuardarProducto(Product product)
         {
             Products.Add(product);
+            return Task.CompletedTask;
         }
     }
 }
